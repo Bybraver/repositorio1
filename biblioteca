@@ -1,0 +1,182 @@
+css:
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Press Start 2P', cursive;
+  background: url('https://i.ibb.co/R4V01mBR/IMG-20250524-WA0077.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background-position 0.1s linear;
+}
+
+header {
+  background: #e60012;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+header h1 {
+  font-size: 14px;
+  color: #fff;
+  text-shadow: 1px 1px 0 #000;
+}
+
+.login {
+  font-size: 12px;
+  background: #fff;
+  color: #e60012;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.login:hover {
+  background: #f2f2f2;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  flex-direction: column;
+}
+
+main h2 {
+  font-size: 14px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.carrusel {
+  perspective: 1000px;
+  width: 100%;
+  max-width: 600px;
+  height: 280px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.tarjeta {
+  width: 120px;
+  height: 180px;
+  background-color: #222;
+  position: absolute;
+  top: 50px;
+  left: calc(50% - 60px);
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+  animation: girar 16s linear infinite;
+  transition: transform 0.5s;
+}
+
+.tarjeta:hover {
+  animation-play-state: paused;
+  transform: scale(1.1);
+  z-index: 5;
+  box-shadow: 0 0 20px 5px rgb(95, 49, 246);
+}
+
+#libro1 { background-image: url('https://i.ibb.co/svXrqQ7c/IMG-20250524-WA0078.jpg'); animation-delay: 0s; }
+#libro2 { background-image: url('https://i.ibb.co/DHFXsc6g/IMG-20250524-WA0079.jpg'); animation-delay: -2s; }
+#libro3 { background-image: url('https://i.ibb.co/sd0CyDmN/IMG-20250524-WA0080.jpg'); animation-delay: -4s; }
+#libro4 { background-image: url('https://i.ibb.co/Ps2GsNFx/IMG-20250524-WA0081.jpg'); animation-delay: -6s; }
+#libro5 { background-image: url('https://i.ibb.co/S7N2TqHV/IMG-20250524-WA0082.jpg'); animation-delay: -8s; }
+#libro6 { background-image: url('https://i.ibb.co/6c1S1GJB/IMG-20250524-WA0083.jpg'); animation-delay: -10s; }
+#libro7 { background-image: url('https://i.ibb.co/cK2rjLTF/IMG-20250524-WA0084.jpg'); animation-delay: -12s; }
+#libro8 { background-image: url('https://i.ibb.co/hxy67Ys0/IMG-20250524-WA0085.jpg'); animation-delay: -14s; }
+
+@keyframes girar {
+  0% { transform: rotateY(0deg) translateZ(250px); }
+  100% { transform: rotateY(360deg) translateZ(250px); }
+}
+
+footer {
+  background: #222;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 10px;
+  color: #fff;
+  text-shadow: 1px 1px 0 #000;
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  header h1 { font-size: 12px; }
+  .login { font-size: 10px; padding: 5px 8px; }
+  main h2 { font-size: 12px; }
+  .tarjeta { width: 90px; height: 140px; }
+}
+
+index
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mi Biblioteca</title>
+  <link rel="stylesheet" href="Styles.css"/>
+</head>
+<body>
+
+  <header>
+    <h1>Mi Biblioteca</h1>
+    <div class="login">Login</div>
+  </header>
+
+  <main>
+    <h2></h2>
+    <div id="carrusel" class="carrusel">
+      <div class="tarjeta" id="libro1"></div>
+      <div class="tarjeta" id="libro2"></div>
+      <div class="tarjeta" id="libro3"></div>
+      <div class="tarjeta" id="libro4"></div>
+      <div class="tarjeta" id="libro5"></div>
+      <div class="tarjeta" id="libro6"></div>
+      <div class="tarjeta" id="libro7"></div>
+      <div class="tarjeta" id="libro8"></div>
+    </div>
+  </main>
+
+  <footer>
+    Derechos by Brayan
+  </footer>
+
+  <script>
+    window.addEventListener('deviceorientation', (e) => {
+      const x = e.gamma || 0;
+      const y = e.beta || 0;
+      const fondoX = 50 + x / 4;
+      const fondoY = 50 + y / 4;
+      document.body.style.backgroundPosition = `${fondoX}% ${fondoY}%`;
+    });
+  </script>
+</body>
+</html>
